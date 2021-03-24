@@ -1,1 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-23T19:01:43+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">r4kso | Blog personal sobre ciberseguridad y otros</title><subtitle>Blog personal sobre ciberseguridad y otros</subtitle><author><name>R4kso</name></author></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-24T11:43:32+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">R4kso | Blog de ciberseguridad</title><subtitle>Blog personal sobre ciberseguridad y otros</subtitle><author><name>R4kso</name></author><entry><title type="html">Proyecto Personal Blog</title><link href="http://localhost:4000/proyecto-personal-blog/" rel="alternate" type="text/html" title="Proyecto Personal Blog" /><published>2021-03-24T00:00:00+00:00</published><updated>2021-03-24T00:00:00+00:00</updated><id>http://localhost:4000/proyecto-personal-blog</id><content type="html" xml:base="http://localhost:4000/proyecto-personal-blog/">&lt;p&gt;&lt;img src=&quot;/assets/images/proyecto-personal-blog/security.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Me presento como &lt;strong&gt;r4kso&lt;/strong&gt; (o Fran), estudiante de Ingeniería Informática en la Universitat Oberta de Catalunya (UOC). Hace un par de meses que descubrí el maravilloso mundo de la ciberseguridad, que me ha fascinado. Me he propuesto aprender más, y es por ello que he creado este blog.&lt;/p&gt;
+
+&lt;p&gt;Tratar de romper una máquina está bastante bien y dependiendo de la dificultad y de tu nivel, puede ser todo un reto pero… Explicarlo incrementa su dificultad. Te obliga a profundizar en cada paso necesario y entenderlo al 100% para transmitir correctamente los pasos dados y el objetivo de cada uno de ellos.&lt;/p&gt;
+
+&lt;h2 id=&quot;contenidos&quot;&gt;Contenidos&lt;/h2&gt;
+&lt;p&gt;Es por esto que publicaré diferentes &lt;strong&gt;posts explicativos&lt;/strong&gt; y &lt;strong&gt;write-ups de máquinas&lt;/strong&gt;, entre otras cosas relacionadas con la ciberseguridad.&lt;/p&gt;
+
+&lt;p&gt;A pesar de que el tema principal será la ciberseguridad, esto no excluirá otros temas que quizás me apetece tocar en un futuro (como la programación o el desarrollo de software).&lt;/p&gt;
+
+&lt;h2 id=&quot;objetivos&quot;&gt;Objetivos&lt;/h2&gt;
+&lt;p&gt;El objetivo principal es muy simple: &lt;strong&gt;aprender&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Aprender mucho, tratar de exprimir al máximo cada máquina o cada tema, entender los diferentes tipos de vulnerabilidades (MitM, DOS, SQLi)…&lt;/p&gt;
+
+&lt;p&gt;Así que ya sabes… &lt;strong&gt;manos a la obra&lt;/strong&gt; :)&lt;/p&gt;</content><author><name>R4kso</name></author><category term="Otros" /><category term="Otros" /><summary type="html">Me presento como r4kso (o Fran), estudiante de Ingeniería Informática en la Universitat Oberta de Catalunya (UOC). Hace un par de meses que descubrí el maravilloso mundo de la ciberseguridad, que me ha fascinado. Me he propuesto aprender más, y es por ello que he creado este blog.</summary></entry></feed>

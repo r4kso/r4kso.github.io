@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "custom" # "air", "aqua", "contrast", "dark", "dirt",
 
 # Site Settings
 locale                   : "es-ES"
-title                    : "r4kso | Blog personal sobre ciberseguridad y otros"
+title                    : "R4kso | Blog de ciberseguridad"
 title_separator          : "-"
 name                     : "R4kso"
 description              : "Blog personal sobre ciberseguridad y otros"
