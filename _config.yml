@@ -71,7 +71,7 @@ google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
 # SEO Related
-google_site_verification : google-site-verification=yC3rS6R_Z9YslLfRfJbQZpSfZqpSXt3QJzWsWZOzOLI
+google_site_verification :
 bing_site_verification   :
 yandex_site_verification :
 naver_site_verification  :
@@ -93,10 +93,10 @@ social:
 
 # Analytics
 analytics:
-  provider               : false # (default), "google", "google-universal", "custom"
+  provider               : "google" # (default), "google", "google-universal", "custom"
   google:
-    tracking_id          :
-    anonymize_ip         :
+    tracking_id          : "G-3V4DGJ4K54"
+    anonymize_ip         : false
 
 
 # Site Author
