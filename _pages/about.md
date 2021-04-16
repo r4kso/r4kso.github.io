@@ -8,7 +8,7 @@ date: 2021-03-24
 <br>
 
 <p align="center">
-<img src="/assets/images/about/cover.jpeg" width="250" height= "300">
+<img src="/assets/images/about/cover.jpg" width="250" height= "300">
 </p>
 
 Mi nombre es Fran Hernández (aka **r4kso**) y soy estudiante de Ingeniería Informática en la UOC (Universitat Oberta de Catalunya). Vivo en **Tenerife, Islas Canarias**.
