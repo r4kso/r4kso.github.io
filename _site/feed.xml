@@ -1,8 +1,190 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-24T12:20:33+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">R4kso | Blog de ciberseguridad</title><subtitle>Blog personal sobre ciberseguridad y otros</subtitle><author><name>R4kso</name></author><entry><title type="html">Proyecto personal 2021</title><link href="http://localhost:4000/proyecto-personal-blog/" rel="alternate" type="text/html" title="Proyecto personal 2021" /><published>2021-03-24T00:00:00+00:00</published><updated>2021-03-24T00:00:00+00:00</updated><id>http://localhost:4000/proyecto-personal-blog</id><content type="html" xml:base="http://localhost:4000/proyecto-personal-blog/">&lt;p&gt;&lt;img src=&quot;/assets/images/proyecto-personal-blog/security.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-16T14:29:19+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">r4kso | Blog de ciberseguridad</title><subtitle>Blog personal sobre ciberseguridad y otros</subtitle><author><name>r4kso</name></author><entry><title type="html">Qué es un socket y cómo funciona</title><link href="http://localhost:4000/que-es-un-socket-y-como-funciona/" rel="alternate" type="text/html" title="Qué es un socket y cómo funciona" /><published>2021-04-16T00:00:00+01:00</published><updated>2021-04-16T00:00:00+01:00</updated><id>http://localhost:4000/que-es-un-socket-y-como-funciona</id><content type="html" xml:base="http://localhost:4000/que-es-un-socket-y-como-funciona/">&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/que-es-un-socket-y-como-funciona/portada.png&quot; width=&quot;50%&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Si tienes prisa, un &lt;strong&gt;&lt;em&gt;socket&lt;/em&gt;&lt;/strong&gt; se puede definir rápidamente como un &lt;strong&gt;“dispositivo” virtual&lt;/strong&gt; producido por el sistema operativo a través del cual puedes &lt;strong&gt;enviar y recibir información de otros procesos&lt;/strong&gt; que también se comunican mediante &lt;em&gt;sockets&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Aunque claro, esta definición se queda un poco corta…&lt;/p&gt;
+&lt;h2 id=&quot;qué-es-un-socket---explicación-larga&quot;&gt;¿Qué es un socket? - Explicación larga&lt;/h2&gt;
+&lt;p&gt;Podría hablarte de la historia y de por qué se crearon, pero si quieres saber eso te dejo este enlace por &lt;a href=&quot;https://dosideas.com/noticias/actualidad/574-pasado-presente-y-futuro-de-los-sockets&quot;&gt;aquí&lt;/a&gt;. Lo que realmente queremos saber es &lt;em&gt;qué es un socket&lt;/em&gt; y &lt;em&gt;cómo funciona&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pues bien, como dije anteriormente un socket es un “”””&quot;”dispositivo””””” (nótese las comillas) virtual generado por el sistema operativo. ¿Qué quiero decir con esto? Pues que un &lt;em&gt;socket&lt;/em&gt; realmente es un concepto abstracto que irá definido por la dirección IP y un puerto.&lt;/p&gt;
+
+&lt;p&gt;Un &lt;em&gt;socket&lt;/em&gt; pertenece a un proceso y sirve como medio de comunicación entre otro proceso (sea que esté ejecutandose en la misma máquina u en otra conectada a Internet). Esto nos permite intercambiar información. Para hacer esto posible existen algunos protocolos como TCP o UDP (en el ejemplo práctico usaremos TCP ya que es el más común).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;UDP (User Datagram Protocol) es un protocolo  &lt;strong&gt;SIN CONEXION&lt;/strong&gt;, es decir, envía paquetes sin llegar a conectarse al destino para así maximizar la velocidad de transmisión de información (en este caso la información se envía en &lt;strong&gt;datagramas&lt;/strong&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;TCP (Transmission Control Protocol) este protocolo es &lt;strong&gt;CON CONEXION&lt;/strong&gt;, lo que garantiza que los paquetes serán entregados en su destino sin errores y en el mismo orden que en el que se emitieron.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/que-es-un-socket-y-como-funciona/img1.jpeg&quot; width=&quot;100%&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;En este esquema hay 2 ordenadores con su dirección IP propia (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;174.123.241.13&lt;/code&gt; y &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;142.250.134.127&lt;/code&gt;). En cada  ordenador se ejecuta un proceso (A y B) que hacen uso de los puertos &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8000&lt;/code&gt; y &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5834&lt;/code&gt; respectivamente. Como hemos dicho antes, cada socket será identificado por su IP y su puerto.&lt;/p&gt;
+
+&lt;p&gt;Así pues el socket A será: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;174.123.241.13:8000&lt;/code&gt; y el socket B será: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;142.250.134.127:5834&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;ejemplo-práctico---echo-server&quot;&gt;Ejemplo práctico - Echo server&lt;/h2&gt;
+&lt;p&gt;Ahora que conocemos qué es un socket, vamos a ver cómo funcionan a en la práctica (lo haremos en python).&lt;/p&gt;
+
+&lt;p&gt;Un echo server consiste en mandarle una información al servidor y recibir a través de ese servidor lo mismo que tú has enviado (el equivalente al comando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;echo&lt;/code&gt; en una terminal linux).&lt;/p&gt;
+
+&lt;p&gt;Para ello, necesitaremos crear el servidor (socket A) y el cliente (socket B).&lt;/p&gt;
+&lt;h3 id=&quot;servidor&quot;&gt;SERVIDOR&lt;/h3&gt;
+&lt;p&gt;Antes de nada, para mayor comodidad definiremos 2 constantes: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HOST&lt;/code&gt; que almacenará la dirección IP que usaremos y &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PORT&lt;/code&gt;que almacenará el puerto que usaremos. (también importamos la libreria socket ya que posteriormente la necesitaremos)&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;socket&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;HOST&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'127.0.0.1'&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# Localhost
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PORT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5346&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;La dirección IP que aparece en HOST es la de &lt;em&gt;localhost&lt;/em&gt;, ya que buscamos trabajar en local. El puerto escogido ha sido uno aleatorio. Existen un total de 65536 puertos, aunque los primeros 1024 se encuentran reservados para el uso del sistema (pueden usarse aunque no no es recomendable ya que podríamos interferir con algún otro proceso importante que haga uso del puerto usado).&lt;/p&gt;
+
+&lt;p&gt;Ahora, ya con la librería importada, crearemos un socket mediante la clase &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;socket&lt;/code&gt; (utilizamos with ya que posteriormente lo necesitaremos para seguir definiendo el código).&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#...
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AF_INET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SOCK_STREAM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# A partir de ahora el socket será nombrado como &quot;s&quot;
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# Continuaremos el código a partir del &quot;with&quot;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Con el primer parámetro indicamos la &lt;strong&gt;familia de dirección&lt;/strong&gt; (AddressFamily.INternET) que en este caso es IPv4 (si usaramos IPv6 deberíamos cambiarlo por &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;socket.AF_INET6&lt;/code&gt;). Con el segundo parámetro indicamos el tipo de protocolo que usaremos para la transferencia de información, que en este caso será TCP.&lt;/p&gt;
+
+&lt;p&gt;Ahora llamamos a la función &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bind&lt;/code&gt; de la clase socket. Con esta función podremos indicar al socket a qué dirección IP pertenece y en qué puerto deberá estar escuchando.&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#...
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HOST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PORT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Una vez que el socket ha sido configurado, hacemos que espere a la conexión de otro socket.&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#...
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Esto hará que el programa se quede pausado en ese punto, hasta que otro socket se intente conectar (estas características lo convierte en un servidor)&lt;/p&gt;
+
+&lt;p&gt;Cuando ocurra un intento de conexión, el servidor la acepta automáticamente mediante el método de la clase socket &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;accept()&lt;/code&gt;. Este método devuelve &lt;strong&gt;otro socket&lt;/strong&gt; (importante) que contiene la información socket que se ha conectado y también devuelve su dirección, que almacenaremos en &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;csocket&lt;/code&gt; y &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;caddress&lt;/code&gt; respectivamente.&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#...
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;csocket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;caddress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Ahora que disponemos de la información del socket cliente, recibimos la información que nos envíe y se la reenviamos:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#...
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;csocket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Connected by : &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;caddress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;            &lt;span class=&quot;c1&quot;&gt;# Imprime la dirección del cliente
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;csocket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;                 &lt;span class=&quot;c1&quot;&gt;# Lee los datos enviados por el cliente
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;                                        
+            &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;                                &lt;span class=&quot;c1&quot;&gt;# En caso de que no queden datos por leer, terminamos.    
+&lt;/span&gt;        
+        &lt;span class=&quot;n&quot;&gt;csocket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sendall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;                    &lt;span class=&quot;c1&quot;&gt;# Le devuelve los datos al cliente
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;En los comentarios se encuentra explicado qué hace línea, aunque viene bien resaltar que cuando llamamos a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;recv()&lt;/code&gt;, pasamos el parámetro &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1024&lt;/code&gt; para indicar el tamaño del buffer, es decir, la cantidad de bytes que puede leer. Si el mensaje fuera más grande, podríamos aumentar su tamaño.&lt;/p&gt;
+
+&lt;p&gt;El bucle está hecho para poder leer todos los datos que envíe el cliente. Una vez los haya leído todos, sale del bucle y finaliza. En este caso no hace falta cerrar el socket con &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s.close()&lt;/code&gt; ya que al finalizar el propio “with” este se cierra automáticamente gracias a que anteriormente creamos el socket mediante &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;socket.socket()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pues con esto &lt;strong&gt;hemos finalizado el código del servidor&lt;/strong&gt;. Crea el socket, lo configura, espera por una conexión, se conecta, recibe los datos y los envía. Un servidor en toda regla ;)&lt;/p&gt;
+
+&lt;p&gt;CÓDIGO COMPLETO:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;socket&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;HOST&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;127.0.0.1&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Localhost
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PORT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5346&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AF_INET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SOCK_STREAM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# Parameters specify the address family and the socket type. Using &quot;with&quot; there is no need to call s.close()
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HOST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PORT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;                                        &lt;span class=&quot;c1&quot;&gt;# Associate the socket to a specific network interface and port number
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;                                                  &lt;span class=&quot;c1&quot;&gt;# Enable the socket to accept connectios. It makes it a listening socket.
+&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;csocket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;caddress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accept&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;                            &lt;span class=&quot;c1&quot;&gt;# Blocks and waits for an incoming connection. Get a new socket object.
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;csocket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Connected by : &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;caddress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;                      &lt;span class=&quot;c1&quot;&gt;# Prints the name of the client
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;csocket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;                           &lt;span class=&quot;c1&quot;&gt;# Read the data from the client
+&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;                
+                &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;                                          &lt;span class=&quot;c1&quot;&gt;# When there is no more data, we finish
+&lt;/span&gt;            
+            &lt;span class=&quot;n&quot;&gt;csocket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sendall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;                              &lt;span class=&quot;c1&quot;&gt;# Return the data to de client
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;PD: Los comentarios en inglés para cumplir con las buenas prácticas&lt;/p&gt;
+&lt;h3 id=&quot;cliente&quot;&gt;CLIENTE&lt;/h3&gt;
+&lt;p&gt;El cliente es algo más sencillo que el servidor, ya que solo debemos conectarnos y enviar la información. Ahora que ya hemos hecho el servidor, este será pan comido.&lt;/p&gt;
+
+&lt;p&gt;En primer lugar importamos la librería socket y creamos las constantes. No necesitamos indicar el puerto y la IP del socket que vamos a crear ahora ya que no nos afecta en nada, será generado de forma aleatoria a conveniencia del sistema operativo. Lo que si necesitamos saber es la IP del servidor y su puerto, es por ello que las almacenamos en las constantes &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SHOST&lt;/code&gt; y &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SPORT&lt;/code&gt; respectivamente.&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;socket&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;SHOST&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'127.0.0.1'&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# Server IP
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SPORT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5346&lt;/span&gt;            &lt;span class=&quot;c1&quot;&gt;# Server port
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Creamos el socket al igual que hicimos en el servidor.&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#...
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AF_INET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SOCK_STREAM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Aquí continuará el código
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Y ahora hacemos una solicitud de conexión con el servidor.&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#...
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SHOST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SPORT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Una vez conectados, le enviamos los datos que queramos (en este caso será un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hello world&lt;/code&gt; simple).&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#...
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sendall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello world! This is an echo server made with python&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Fijate en la b que se encuentra detrás de la cadena de texto que queremos enviar. Esto es para indicar que es un “byte string”, que es el tipo de formato en el que debemos de enviar los datos, dado que la clase String internamente es un array de bytes. Otra forma de hacerlo sería guardando el string en una variable y codificarle mediante el método &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;encode()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Luego, guardamos en la variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; lo que nos envía el servidor (recuerda que el 1024 indica el tamaño del buffer).&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Y ya por último, fuera del “with” imprimimos por pantalla los datos recibidos.&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#...
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Data received by the server: '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;repr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Fíjate en el método &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;repr()&lt;/code&gt;. Lo que hace es convertir lo que le pasemos por parámetro en algo representable por la terminal. Necesitamos usarlo ya que los datos se encuentran en “byte string”.&lt;/p&gt;
+
+&lt;p&gt;CODIGO COMPLETO:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;socket&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;SHOST&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'127.0.0.1'&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# Localhost
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SPORT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5346&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AF_INET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SOCK_STREAM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SHOST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SPORT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sendall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello world! This is an echo server made with python.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;recv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Received: '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;repr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;ejecutando-el-echo-server&quot;&gt;Ejecutando el echo server&lt;/h2&gt;
+&lt;p&gt;Para hacer funcionar el echo server, necesitamos ejecutar tanto el servidor como el cliente.&lt;/p&gt;
+
+&lt;p&gt;Primero ejecutamos el servidor. Yo utilizo VSCode por lo que lo abro desde la terminal del propio IDE y lo ejecuto como &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python .\server.py&lt;/code&gt; (o el nombre que le hayas dado al archivo de tu servidor):&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/que-es-un-socket-y-como-funciona/img2.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Como vemos, ya está ejecutándose&lt;/p&gt;
+
+&lt;p&gt;Ahora, abrimos otra pestaña de la terminal (el botón al lado del “+” en la parte superior derecha de la terminal) y ejecutamos &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python .\client.py&lt;/code&gt; (o el nombre que le hayas dado al archivo de tu cliente):&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/que-es-un-socket-y-como-funciona/img3.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Y ahora el servidor muestra:&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/que-es-un-socket-y-como-funciona/img4.png&quot; width=&quot;100%&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Como se puede ver, el resultado del cliente ha sido el esperado. El cliente se ha conectado desde la IP &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;127.0.0.1&lt;/code&gt;, luego ha envíado &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&quot;Hello world! This is an echo server made with python&quot;&lt;/code&gt;, el servidor lo ha recibido y lo ha reenviado de nuevo al cliente. Después, el cliente lo ha mostrado por pantalla y ambos han finalizado su ejecución.&lt;/p&gt;
+
+&lt;p&gt;Podemos ver el socket abierto &lt;strong&gt;si dejamos el servidor ejecutándose&lt;/strong&gt;. Para ello, abrimos la terminal (en este caso Windows) y ejecutamos el comando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;netstat -an&lt;/code&gt;. Haciendo scroll hasta los sockets TCP, podemos ver el que hemos creado, que se encuentra en la IP &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;127.0.0.1&lt;/code&gt; y en el puerto &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5346&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/que-es-un-socket-y-como-funciona/img5.png&quot; width=&quot;80%&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Una vez finalicemos la ejecución del servidor, el socket se cerrará y ya no lo podremos ver en la lista.&lt;/p&gt;</content><author><name>r4kso</name></author><category term="Explicaciones" /><category term="Tutoriales" /><category term="Redes" /><category term="Python" /><category term="Sockets" /><summary type="html">En este post te explico qué es un socket y cómo funciona, con un ejemplo práctico hecho en python (un echo server)</summary></entry><entry><title type="html">Proyecto personal 2021</title><link href="http://localhost:4000/proyecto-personal-blog/" rel="alternate" type="text/html" title="Proyecto personal 2021" /><published>2021-03-24T00:00:00+00:00</published><updated>2021-03-24T00:00:00+00:00</updated><id>http://localhost:4000/proyecto-personal-blog</id><content type="html" xml:base="http://localhost:4000/proyecto-personal-blog/">&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/proyecto-personal-blog/security.jpg&quot; width=&quot;50%&quot; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;Me presento como &lt;strong&gt;r4kso&lt;/strong&gt; (o Fran), estudiante de Ingeniería Informática en la Universitat Oberta de Catalunya (UOC). Hace un par de meses que descubrí el maravilloso mundo de la ciberseguridad, que me ha fascinado. Me he propuesto aprender más, y es por ello que he creado este blog.&lt;/p&gt;
 
-&lt;p&gt;Tratar de romper una máquina está bastante bien y dependiendo de la dificultad y de tu nivel, puede ser todo un reto pero… Explicarlo incrementa su dificultad. Te obliga a profundizar en cada paso necesario y entenderlo al 100% para transmitir correctamente los pasos dados y el objetivo de cada uno de ellos.&lt;/p&gt;
+&lt;p&gt;Tratar de romper una máquina está bastante bien y dependiendo de la dificultad y de tu nivel, puede ser todo un reto pero… Explicarlo incrementa su dificultad. Te obliga a profundizar en cada paso necesario y entenderlo al 100% para explicar correctamente los pasos dados y el objetivo de cada uno de ellos.&lt;/p&gt;
 
 &lt;h2 id=&quot;contenidos&quot;&gt;Contenidos&lt;/h2&gt;
 &lt;p&gt;Es por esto que publicaré diferentes &lt;strong&gt;posts explicativos&lt;/strong&gt; y &lt;strong&gt;write-ups de máquinas&lt;/strong&gt;, entre otras cosas relacionadas con la ciberseguridad.&lt;/p&gt;
@@ -12,6 +194,6 @@
 &lt;h2 id=&quot;objetivos&quot;&gt;Objetivos&lt;/h2&gt;
 &lt;p&gt;El objetivo principal es muy simple: &lt;strong&gt;aprender&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Aprender mucho, tratar de exprimir al máximo cada máquina o cada tema, entender los diferentes tipos de vulnerabilidades (MitM, DOS, SQLi)…&lt;/p&gt;
+&lt;p&gt;Aprender mucho, tratar de exprimir al máximo cada máquina o cada tema y extraer todo el conocimiento posible&lt;/p&gt;
 
-&lt;p&gt;Así que ya sabes… &lt;strong&gt;manos a la obra&lt;/strong&gt; :)&lt;/p&gt;</content><author><name>R4kso</name></author><category term="Otros" /><category term="Otros" /><summary type="html">Me presento como r4kso (o Fran), estudiante de Ingeniería Informática en la Universitat Oberta de Catalunya (UOC). Hace un par de meses que descubrí el maravilloso mundo de la ciberseguridad, que me ha fascinado. Me he propuesto aprender más, y es por ello que he creado este blog.</summary></entry></feed>
+&lt;p&gt;Así que… &lt;strong&gt;manos a la obra&lt;/strong&gt; :)&lt;/p&gt;</content><author><name>r4kso</name></author><category term="Otros" /><category term="Otros" /><summary type="html">Me presento como r4kso (o Fran), estudiante de Ingeniería Informática en la Universitat Oberta de Catalunya (UOC). Hace un par de meses que descubrí el maravilloso mundo de la ciberseguridad, que me ha fascinado. Me he propuesto aprender más, y es por ello que he creado este blog.</summary></entry></feed>

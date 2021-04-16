@@ -1,0 +1,628 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.15.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>            Qué es un socket y cómo funciona - r4kso      Blog de ciberseguridad      </title>
+<meta name="description" content="En este post te explico qué es un socket y cómo funciona, con un ejemplo práctico hecho en python (un echo server)">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="r4kso | Blog de ciberseguridad">
+<meta property="og:title" content="Qué es un socket y cómo funciona">
+<meta property="og:url" content="http://localhost:4000/que-es-un-socket-y-como-funciona/">
+
+
+  <meta property="og:description" content="En este post te explico qué es un socket y cómo funciona, con un ejemplo práctico hecho en python (un echo server)">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/que-es-un-socket-y-como-funciona/portada.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-04-16T00:00:00+01:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/que-es-un-socket-y-como-funciona/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "r4kso",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+  <meta name="google-site-verification" content="i-4J_ebaBRiAqToKNWnZp_rUjs2sm7fmwCbqz8kd7Sg" />
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="r4kso | Blog de ciberseguridad Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/masthead.png" alt=""></a>
+                
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Etiquetas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >Sobre mí</a>
+            </li><li class="masthead__menu-item">
+              <a href="/buscador/" >Buscador</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+    
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Qué es un socket y cómo funciona</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profilepic.jpg" alt="r4kso" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">r4kso</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        IT degree student / Interested in cybersecurity / Pentester wannabe
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/r4kso_cs" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/fran-hernández-rizo-624b891aa" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://instagram.com/im.r4kso" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/r4kso" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Qué es un socket y cómo funciona">
+    <meta itemprop="description" content="En este post te explico qué es un socket y cómo funciona, con un ejemplo práctico hecho en python (un echo server)">
+    <meta itemprop="datePublished" content="April 16, 2021">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Qué es un socket y cómo funciona
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p class="page__meta">
+          
+            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="2021-04-16T00:00:00+01:00">April 16, 2021 </time>&emsp;
+          
+          
+        </p>
+        <p align="center">
+<img src="/assets/images/que-es-un-socket-y-como-funciona/portada.png" width="50%" />
+</p>
+
+<p>Si tienes prisa, un <strong><em>socket</em></strong> se puede definir rápidamente como un <strong>“dispositivo” virtual</strong> producido por el sistema operativo a través del cual puedes <strong>enviar y recibir información de otros procesos</strong> que también se comunican mediante <em>sockets</em>.</p>
+
+<p>Aunque claro, esta definición se queda un poco corta…</p>
+<h2 id="qué-es-un-socket---explicación-larga">¿Qué es un socket? - Explicación larga</h2>
+<p>Podría hablarte de la historia y de por qué se crearon, pero si quieres saber eso te dejo este enlace por <a href="https://dosideas.com/noticias/actualidad/574-pasado-presente-y-futuro-de-los-sockets">aquí</a>. Lo que realmente queremos saber es <em>qué es un socket</em> y <em>cómo funciona</em>.</p>
+
+<p>Pues bien, como dije anteriormente un socket es un “”””"”dispositivo””””” (nótese las comillas) virtual generado por el sistema operativo. ¿Qué quiero decir con esto? Pues que un <em>socket</em> realmente es un concepto abstracto que irá definido por la dirección IP y un puerto.</p>
+
+<p>Un <em>socket</em> pertenece a un proceso y sirve como medio de comunicación entre otro proceso (sea que esté ejecutandose en la misma máquina u en otra conectada a Internet). Esto nos permite intercambiar información. Para hacer esto posible existen algunos protocolos como TCP o UDP (en el ejemplo práctico usaremos TCP ya que es el más común).</p>
+
+<blockquote>
+  <p>UDP (User Datagram Protocol) es un protocolo  <strong>SIN CONEXION</strong>, es decir, envía paquetes sin llegar a conectarse al destino para así maximizar la velocidad de transmisión de información (en este caso la información se envía en <strong>datagramas</strong>)</p>
+</blockquote>
+
+<blockquote>
+  <p>TCP (Transmission Control Protocol) este protocolo es <strong>CON CONEXION</strong>, lo que garantiza que los paquetes serán entregados en su destino sin errores y en el mismo orden que en el que se emitieron.</p>
+</blockquote>
+
+<p align="center">
+<img src="/assets/images/que-es-un-socket-y-como-funciona/img1.jpeg" width="100%" />
+</p>
+
+<p>En este esquema hay 2 ordenadores con su dirección IP propia (<code class="language-plaintext highlighter-rouge">174.123.241.13</code> y <code class="language-plaintext highlighter-rouge">142.250.134.127</code>). En cada  ordenador se ejecuta un proceso (A y B) que hacen uso de los puertos <code class="language-plaintext highlighter-rouge">8000</code> y <code class="language-plaintext highlighter-rouge">5834</code> respectivamente. Como hemos dicho antes, cada socket será identificado por su IP y su puerto.</p>
+
+<p>Así pues el socket A será: <code class="language-plaintext highlighter-rouge">174.123.241.13:8000</code> y el socket B será: <code class="language-plaintext highlighter-rouge">142.250.134.127:5834</code>.</p>
+<h2 id="ejemplo-práctico---echo-server">Ejemplo práctico - Echo server</h2>
+<p>Ahora que conocemos qué es un socket, vamos a ver cómo funcionan a en la práctica (lo haremos en python).</p>
+
+<p>Un echo server consiste en mandarle una información al servidor y recibir a través de ese servidor lo mismo que tú has enviado (el equivalente al comando <code class="language-plaintext highlighter-rouge">echo</code> en una terminal linux).</p>
+
+<p>Para ello, necesitaremos crear el servidor (socket A) y el cliente (socket B).</p>
+<h3 id="servidor">SERVIDOR</h3>
+<p>Antes de nada, para mayor comodidad definiremos 2 constantes: <code class="language-plaintext highlighter-rouge">HOST</code> que almacenará la dirección IP que usaremos y <code class="language-plaintext highlighter-rouge">PORT</code>que almacenará el puerto que usaremos. (también importamos la libreria socket ya que posteriormente la necesitaremos)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="n">HOST</span> <span class="o">=</span> <span class="s">'127.0.0.1'</span>      <span class="c1"># Localhost
+</span><span class="n">PORT</span> <span class="o">=</span> <span class="mi">5346</span>
+</code></pre></div></div>
+<p>La dirección IP que aparece en HOST es la de <em>localhost</em>, ya que buscamos trabajar en local. El puerto escogido ha sido uno aleatorio. Existen un total de 65536 puertos, aunque los primeros 1024 se encuentran reservados para el uso del sistema (pueden usarse aunque no no es recomendable ya que podríamos interferir con algún otro proceso importante que haga uso del puerto usado).</p>
+
+<p>Ahora, ya con la librería importada, crearemos un socket mediante la clase <code class="language-plaintext highlighter-rouge">socket</code> (utilizamos with ya que posteriormente lo necesitaremos para seguir definiendo el código).</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
+</span><span class="k">with</span> <span class="n">socket</span><span class="p">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="p">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>    <span class="c1"># A partir de ahora el socket será nombrado como "s"
+</span>    <span class="c1"># Continuaremos el código a partir del "with"
+</span></code></pre></div></div>
+<p>Con el primer parámetro indicamos la <strong>familia de dirección</strong> (AddressFamily.INternET) que en este caso es IPv4 (si usaramos IPv6 deberíamos cambiarlo por <code class="language-plaintext highlighter-rouge">socket.AF_INET6</code>). Con el segundo parámetro indicamos el tipo de protocolo que usaremos para la transferencia de información, que en este caso será TCP.</p>
+
+<p>Ahora llamamos a la función <code class="language-plaintext highlighter-rouge">bind</code> de la clase socket. Con esta función podremos indicar al socket a qué dirección IP pertenece y en qué puerto deberá estar escuchando.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
+</span><span class="n">s</span><span class="p">.</span><span class="n">bind</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Una vez que el socket ha sido configurado, hacemos que espere a la conexión de otro socket.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
+</span><span class="n">s</span><span class="p">.</span><span class="n">listen</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Esto hará que el programa se quede pausado en ese punto, hasta que otro socket se intente conectar (estas características lo convierte en un servidor)</p>
+
+<p>Cuando ocurra un intento de conexión, el servidor la acepta automáticamente mediante el método de la clase socket <code class="language-plaintext highlighter-rouge">accept()</code>. Este método devuelve <strong>otro socket</strong> (importante) que contiene la información socket que se ha conectado y también devuelve su dirección, que almacenaremos en <code class="language-plaintext highlighter-rouge">csocket</code> y <code class="language-plaintext highlighter-rouge">caddress</code> respectivamente.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
+</span><span class="p">(</span><span class="n">csocket</span><span class="p">,</span> <span class="n">caddress</span><span class="p">)</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">accept</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Ahora que disponemos de la información del socket cliente, recibimos la información que nos envíe y se la reenviamos:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
+</span><span class="k">with</span> <span class="n">csocket</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Connected by : "</span><span class="p">,</span> <span class="n">caddress</span><span class="p">)</span>            <span class="c1"># Imprime la dirección del cliente
+</span>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">csocket</span><span class="p">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>                 <span class="c1"># Lee los datos enviados por el cliente
+</span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>                                        
+            <span class="k">break</span><span class="p">;</span>                                <span class="c1"># En caso de que no queden datos por leer, terminamos.    
+</span>        
+        <span class="n">csocket</span><span class="p">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>                    <span class="c1"># Le devuelve los datos al cliente
+</span></code></pre></div></div>
+<p>En los comentarios se encuentra explicado qué hace línea, aunque viene bien resaltar que cuando llamamos a <code class="language-plaintext highlighter-rouge">recv()</code>, pasamos el parámetro <code class="language-plaintext highlighter-rouge">1024</code> para indicar el tamaño del buffer, es decir, la cantidad de bytes que puede leer. Si el mensaje fuera más grande, podríamos aumentar su tamaño.</p>
+
+<p>El bucle está hecho para poder leer todos los datos que envíe el cliente. Una vez los haya leído todos, sale del bucle y finaliza. En este caso no hace falta cerrar el socket con <code class="language-plaintext highlighter-rouge">s.close()</code> ya que al finalizar el propio “with” este se cierra automáticamente gracias a que anteriormente creamos el socket mediante <code class="language-plaintext highlighter-rouge">socket.socket()</code>.</p>
+
+<p>Pues con esto <strong>hemos finalizado el código del servidor</strong>. Crea el socket, lo configura, espera por una conexión, se conecta, recibe los datos y los envía. Un servidor en toda regla ;)</p>
+
+<p>CÓDIGO COMPLETO:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="n">HOST</span> <span class="o">=</span> <span class="s">"127.0.0.1"</span> <span class="c1"># Localhost
+</span><span class="n">PORT</span> <span class="o">=</span> <span class="mi">5346</span>
+
+<span class="k">with</span> <span class="n">socket</span><span class="p">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="p">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>    <span class="c1"># Parameters specify the address family and the socket type. Using "with" there is no need to call s.close()
+</span>    <span class="n">s</span><span class="p">.</span><span class="n">bind</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>                                        <span class="c1"># Associate the socket to a specific network interface and port number
+</span>    <span class="n">s</span><span class="p">.</span><span class="n">listen</span><span class="p">()</span>                                                  <span class="c1"># Enable the socket to accept connectios. It makes it a listening socket.
+</span>    <span class="p">(</span><span class="n">csocket</span><span class="p">,</span> <span class="n">caddress</span><span class="p">)</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">accept</span><span class="p">()</span>                            <span class="c1"># Blocks and waits for an incoming connection. Get a new socket object.
+</span>    <span class="k">with</span> <span class="n">csocket</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Connected by : "</span><span class="p">,</span> <span class="n">caddress</span><span class="p">)</span>                      <span class="c1"># Prints the name of the client
+</span>        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">csocket</span><span class="p">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>                           <span class="c1"># Read the data from the client
+</span>            <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>                
+                <span class="k">break</span><span class="p">;</span>                                          <span class="c1"># When there is no more data, we finish
+</span>            
+            <span class="n">csocket</span><span class="p">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>                              <span class="c1"># Return the data to de client
+</span></code></pre></div></div>
+<p>PD: Los comentarios en inglés para cumplir con las buenas prácticas</p>
+<h3 id="cliente">CLIENTE</h3>
+<p>El cliente es algo más sencillo que el servidor, ya que solo debemos conectarnos y enviar la información. Ahora que ya hemos hecho el servidor, este será pan comido.</p>
+
+<p>En primer lugar importamos la librería socket y creamos las constantes. No necesitamos indicar el puerto y la IP del socket que vamos a crear ahora ya que no nos afecta en nada, será generado de forma aleatoria a conveniencia del sistema operativo. Lo que si necesitamos saber es la IP del servidor y su puerto, es por ello que las almacenamos en las constantes <code class="language-plaintext highlighter-rouge">SHOST</code> y <code class="language-plaintext highlighter-rouge">SPORT</code> respectivamente.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="n">SHOST</span> <span class="o">=</span> <span class="s">'127.0.0.1'</span>      <span class="c1"># Server IP
+</span><span class="n">SPORT</span> <span class="o">=</span> <span class="mi">5346</span>            <span class="c1"># Server port
+</span></code></pre></div></div>
+<p>Creamos el socket al igual que hicimos en el servidor.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
+</span><span class="k">with</span> <span class="n">socket</span><span class="p">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="p">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="c1"># Aquí continuará el código
+</span></code></pre></div></div>
+<p>Y ahora hacemos una solicitud de conexión con el servidor.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
+</span><span class="n">s</span><span class="p">.</span><span class="n">connect</span><span class="p">((</span><span class="n">SHOST</span><span class="p">,</span> <span class="n">SPORT</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Una vez conectados, le enviamos los datos que queramos (en este caso será un <code class="language-plaintext highlighter-rouge">hello world</code> simple).</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
+</span><span class="n">s</span><span class="p">.</span><span class="n">sendall</span><span class="p">(</span><span class="sa">b</span><span class="s">"Hello world! This is an echo server made with python"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Fijate en la b que se encuentra detrás de la cadena de texto que queremos enviar. Esto es para indicar que es un “byte string”, que es el tipo de formato en el que debemos de enviar los datos, dado que la clase String internamente es un array de bytes. Otra forma de hacerlo sería guardando el string en una variable y codificarle mediante el método <code class="language-plaintext highlighter-rouge">encode()</code>.</p>
+
+<p>Luego, guardamos en la variable <code class="language-plaintext highlighter-rouge">data</code> lo que nos envía el servidor (recuerda que el 1024 indica el tamaño del buffer).</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Y ya por último, fuera del “with” imprimimos por pantalla los datos recibidos.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
+</span><span class="k">print</span><span class="p">(</span><span class="s">'Data received by the server: '</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</code></pre></div></div>
+<p>Fíjate en el método <code class="language-plaintext highlighter-rouge">repr()</code>. Lo que hace es convertir lo que le pasemos por parámetro en algo representable por la terminal. Necesitamos usarlo ya que los datos se encuentran en “byte string”.</p>
+
+<p>CODIGO COMPLETO:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="n">SHOST</span> <span class="o">=</span> <span class="s">'127.0.0.1'</span>      <span class="c1"># Localhost
+</span><span class="n">SPORT</span> <span class="o">=</span> <span class="mi">5346</span>
+
+<span class="k">with</span> <span class="n">socket</span><span class="p">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="p">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">connect</span><span class="p">((</span><span class="n">SHOST</span><span class="p">,</span> <span class="n">SPORT</span><span class="p">))</span>
+    <span class="n">s</span><span class="p">.</span><span class="n">sendall</span><span class="p">(</span><span class="sa">b</span><span class="s">"Hello world! This is an echo server made with python."</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'Received: '</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</code></pre></div></div>
+<h2 id="ejecutando-el-echo-server">Ejecutando el echo server</h2>
+<p>Para hacer funcionar el echo server, necesitamos ejecutar tanto el servidor como el cliente.</p>
+
+<p>Primero ejecutamos el servidor. Yo utilizo VSCode por lo que lo abro desde la terminal del propio IDE y lo ejecuto como <code class="language-plaintext highlighter-rouge">python .\server.py</code> (o el nombre que le hayas dado al archivo de tu servidor):</p>
+
+<p align="center">
+<img src="/assets/images/que-es-un-socket-y-como-funciona/img2.png" width="100%" />
+</p>
+
+<p>Como vemos, ya está ejecutándose</p>
+
+<p>Ahora, abrimos otra pestaña de la terminal (el botón al lado del “+” en la parte superior derecha de la terminal) y ejecutamos <code class="language-plaintext highlighter-rouge">python .\client.py</code> (o el nombre que le hayas dado al archivo de tu cliente):</p>
+
+<p align="center">
+<img src="/assets/images/que-es-un-socket-y-como-funciona/img3.png" width="100%" />
+</p>
+
+<p>Y ahora el servidor muestra:</p>
+
+<p align="center">
+<img src="/assets/images/que-es-un-socket-y-como-funciona/img4.png" width="100%" />
+</p>
+
+<p>Como se puede ver, el resultado del cliente ha sido el esperado. El cliente se ha conectado desde la IP <code class="language-plaintext highlighter-rouge">127.0.0.1</code>, luego ha envíado <code class="language-plaintext highlighter-rouge">b"Hello world! This is an echo server made with python"</code>, el servidor lo ha recibido y lo ha reenviado de nuevo al cliente. Después, el cliente lo ha mostrado por pantalla y ambos han finalizado su ejecución.</p>
+
+<p>Podemos ver el socket abierto <strong>si dejamos el servidor ejecutándose</strong>. Para ello, abrimos la terminal (en este caso Windows) y ejecutamos el comando <code class="language-plaintext highlighter-rouge">netstat -an</code>. Haciendo scroll hasta los sockets TCP, podemos ver el que hemos creado, que se encuentra en la IP <code class="language-plaintext highlighter-rouge">127.0.0.1</code> y en el puerto <code class="language-plaintext highlighter-rouge">5346</code>:</p>
+
+<p align="center">
+<img src="/assets/images/que-es-un-socket-y-como-funciona/img5.png" width="80%" />
+</p>
+
+<p>Una vez finalicemos la ejecución del servidor, el socket se cerrará y ya no lo podremos ver en la lista.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">Python</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#redes" class="page__taxonomy-item" rel="tag">Redes</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#sockets" class="page__taxonomy-item" rel="tag">Sockets</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#tutoriales" class="page__taxonomy-item" rel="tag">Tutoriales</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#explicaciones" class="page__taxonomy-item" rel="tag">Explicaciones</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Fecha:</strong> <time datetime="2021-04-16T00:00:00+01:00">April 16, 2021</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/proyecto-personal-blog/" class="pagination--pager" title="Proyecto personal 2021
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 r4kso</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script data-search-pseudo-elements defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
