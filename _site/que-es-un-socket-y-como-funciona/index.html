@@ -327,7 +327,7 @@
 <img src="/assets/images/que-es-un-socket-y-como-funciona/portada.png" width="50%" />
 </p>
 
-<p>Si tienes prisa, un <strong><em>socket</em></strong> se puede definir rápidamente como un <strong>“dispositivo” virtual</strong> producido por el sistema operativo a través del cual puedes <strong>enviar y recibir información de otros procesos</strong> que también se comunican mediante <em>sockets</em>.</p>
+<p>Si tienes prisa, un <strong><em>socket</em></strong> se puede definir rápidamente como un <strong>“dispositivo” virtual</strong> generado por el sistema operativo a través del cual puedes <strong>enviar y recibir información de otros procesos</strong> que también se comuniquen mediante <em>sockets</em>.</p>
 
 <p>Aunque claro, esta definición se queda un poco corta…</p>
 <h2 id="qué-es-un-socket---explicación-larga">¿Qué es un socket? - Explicación larga</h2>
@@ -335,7 +335,7 @@
 
 <p>Pues bien, como dije anteriormente un socket es un “”””"”dispositivo””””” (nótese las comillas) virtual generado por el sistema operativo. ¿Qué quiero decir con esto? Pues que un <em>socket</em> realmente es un concepto abstracto que irá definido por la dirección IP y un puerto.</p>
 
-<p>Un <em>socket</em> pertenece a un proceso y sirve como medio de comunicación entre otro proceso (sea que esté ejecutandose en la misma máquina u en otra conectada a Internet). Esto nos permite intercambiar información. Para hacer esto posible existen algunos protocolos como TCP o UDP (en el ejemplo práctico usaremos TCP ya que es el más común).</p>
+<p>Un <em>socket</em> pertenece a un proceso y sirve como medio de comunicación entre otro proceso (sea que esté ejecutandose en la misma máquina u otra en tu misma red local o conectada a Internet). Esto nos permite intercambiar información. Para hacer esto posible existen algunos protocolos como TCP o UDP (en el ejemplo práctico usaremos TCP ya que es el más común).</p>
 
 <blockquote>
   <p>UDP (User Datagram Protocol) es un protocolo  <strong>SIN CONEXION</strong>, es decir, envía paquetes sin llegar a conectarse al destino para así maximizar la velocidad de transmisión de información (en este caso la información se envía en <strong>datagramas</strong>)</p>
@@ -349,7 +349,7 @@
 <img src="/assets/images/que-es-un-socket-y-como-funciona/img1.jpeg" width="100%" />
 </p>
 
-<p>En este esquema hay 2 ordenadores con su dirección IP propia (<code class="language-plaintext highlighter-rouge">174.123.241.13</code> y <code class="language-plaintext highlighter-rouge">142.250.134.127</code>). En cada  ordenador se ejecuta un proceso (A y B) que hacen uso de los puertos <code class="language-plaintext highlighter-rouge">8000</code> y <code class="language-plaintext highlighter-rouge">5834</code> respectivamente. Como hemos dicho antes, cada socket será identificado por su IP y su puerto.</p>
+<p>En este esquema hay 2 ordenadores con su dirección IP propia (<code class="language-plaintext highlighter-rouge">174.123.241.13</code> y <code class="language-plaintext highlighter-rouge">142.250.134.127</code>). En cada ordenador se ejecuta un proceso (A y B) que hacen uso de los puertos <code class="language-plaintext highlighter-rouge">8000</code> y <code class="language-plaintext highlighter-rouge">5834</code> respectivamente. Como hemos dicho antes, cada socket será identificado por su IP y su puerto.</p>
 
 <p>Así pues el socket A será: <code class="language-plaintext highlighter-rouge">174.123.241.13:8000</code> y el socket B será: <code class="language-plaintext highlighter-rouge">142.250.134.127:5834</code>.</p>
 <h2 id="ejemplo-práctico---echo-server">Ejemplo práctico - Echo server</h2>
@@ -359,16 +359,16 @@
 
 <p>Para ello, necesitaremos crear el servidor (socket A) y el cliente (socket B).</p>
 <h3 id="servidor">SERVIDOR</h3>
-<p>Antes de nada, para mayor comodidad definiremos 2 constantes: <code class="language-plaintext highlighter-rouge">HOST</code> que almacenará la dirección IP que usaremos y <code class="language-plaintext highlighter-rouge">PORT</code>que almacenará el puerto que usaremos. (también importamos la libreria socket ya que posteriormente la necesitaremos)</p>
+<p>Antes de nada, para mayor comodidad definiremos 2 constantes: <code class="language-plaintext highlighter-rouge">HOST</code> que almacenará la dirección IP que usaremos y <code class="language-plaintext highlighter-rouge">PORT</code> que almacenará el puerto que usaremos. Importamos previamente la libreria <code class="language-plaintext highlighter-rouge">socket</code> ya que posteriormente la necesitaremos.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">socket</span>
 
 <span class="n">HOST</span> <span class="o">=</span> <span class="s">'127.0.0.1'</span>      <span class="c1"># Localhost
 </span><span class="n">PORT</span> <span class="o">=</span> <span class="mi">5346</span>
 </code></pre></div></div>
-<p>La dirección IP que aparece en HOST es la de <em>localhost</em>, ya que buscamos trabajar en local. El puerto escogido ha sido uno aleatorio. Existen un total de 65536 puertos, aunque los primeros 1024 se encuentran reservados para el uso del sistema (pueden usarse aunque no no es recomendable ya que podríamos interferir con algún otro proceso importante que haga uso del puerto usado).</p>
+<p>La dirección IP que aparece en HOST es la de <em>localhost</em>, ya que buscamos trabajar en local. El puerto escogido ha sido uno aleatorio. Existen un total de 65536 puertos, aunque los primeros 1024 se encuentran reservados para el uso del sistema. Estos pueden usarse aunque no es recomendable ya que podríamos interferir con algún otro proceso importante que haga uso del puerto usado.</p>
 
-<p>Ahora, ya con la librería importada, crearemos un socket mediante la clase <code class="language-plaintext highlighter-rouge">socket</code> (utilizamos with ya que posteriormente lo necesitaremos para seguir definiendo el código).</p>
+<p>Ahora, ya con la librería importada, crearemos un socket mediante la clase <code class="language-plaintext highlighter-rouge">socket</code>. Utilizamos <code class="language-plaintext highlighter-rouge">with</code> ya que posteriormente lo necesitaremos para seguir definiendo el código.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
 </span><span class="k">with</span> <span class="n">socket</span><span class="p">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="p">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>    <span class="c1"># A partir de ahora el socket será nombrado como "s"
 </span>    <span class="c1"># Continuaremos el código a partir del "with"
@@ -383,7 +383,7 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
 </span><span class="n">s</span><span class="p">.</span><span class="n">listen</span><span class="p">()</span>
 </code></pre></div></div>
-<p>Esto hará que el programa se quede pausado en ese punto, hasta que otro socket se intente conectar (estas características lo convierte en un servidor)</p>
+<p>Esto hará que el programa se quede pausado en ese punto, hasta que otro socket se intente conectar, cumpliendo así las características de un servidor.</p>
 
 <p>Cuando ocurra un intento de conexión, el servidor la acepta automáticamente mediante el método de la clase socket <code class="language-plaintext highlighter-rouge">accept()</code>. Este método devuelve <strong>otro socket</strong> (importante) que contiene la información socket que se ha conectado y también devuelve su dirección, que almacenaremos en <code class="language-plaintext highlighter-rouge">csocket</code> y <code class="language-plaintext highlighter-rouge">caddress</code> respectivamente.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
@@ -444,11 +444,11 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
 </span><span class="n">s</span><span class="p">.</span><span class="n">connect</span><span class="p">((</span><span class="n">SHOST</span><span class="p">,</span> <span class="n">SPORT</span><span class="p">))</span>
 </code></pre></div></div>
-<p>Una vez conectados, le enviamos los datos que queramos (en este caso será un <code class="language-plaintext highlighter-rouge">hello world</code> simple).</p>
+<p>Una vez conectados, le enviamos los datos que queramos. Yo enviaré un simple “hello world”.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
 </span><span class="n">s</span><span class="p">.</span><span class="n">sendall</span><span class="p">(</span><span class="sa">b</span><span class="s">"Hello world! This is an echo server made with python"</span><span class="p">)</span>
 </code></pre></div></div>
-<p>Fijate en la b que se encuentra detrás de la cadena de texto que queremos enviar. Esto es para indicar que es un “byte string”, que es el tipo de formato en el que debemos de enviar los datos, dado que la clase String internamente es un array de bytes. Otra forma de hacerlo sería guardando el string en una variable y codificarle mediante el método <code class="language-plaintext highlighter-rouge">encode()</code>.</p>
+<p>Fijate en la b que se encuentra detrás de la cadena de texto que queremos enviar. Esto es para indicar que es un “byte string”, que es el tipo de formato en el que debemos de enviar los datos, dado que la clase String internamente es un array de bytes. Otra forma de hacerlo sería guardando el string en una variable y codificarla mediante el método <code class="language-plaintext highlighter-rouge">encode()</code>.</p>
 
 <p>Luego, guardamos en la variable <code class="language-plaintext highlighter-rouge">data</code> lo que nos envía el servidor (recuerda que el 1024 indica el tamaño del buffer).</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>

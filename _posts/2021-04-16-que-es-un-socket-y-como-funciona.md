@@ -19,7 +19,7 @@ tags:
 <img src="/assets/images/que-es-un-socket-y-como-funciona/portada.png" width="50%">
 </p>
 
-Si tienes prisa, un ***socket*** se puede definir rápidamente como un **"dispositivo" virtual** producido por el sistema operativo a través del cual puedes **enviar y recibir información de otros procesos** que también se comunican mediante *sockets*.
+Si tienes prisa, un ***socket*** se puede definir rápidamente como un **"dispositivo" virtual** generado por el sistema operativo a través del cual puedes **enviar y recibir información de otros procesos** que también se comuniquen mediante *sockets*.
 
 Aunque claro, esta definición se queda un poco corta...
 ## ¿Qué es un socket? - Explicación larga
@@ -27,7 +27,7 @@ Podría hablarte de la historia y de por qué se crearon, pero si quieres saber 
 
 Pues bien, como dije anteriormente un socket es un """"""dispositivo""""" (nótese las comillas) virtual generado por el sistema operativo. ¿Qué quiero decir con esto? Pues que un *socket* realmente es un concepto abstracto que irá definido por la dirección IP y un puerto.
 
-Un *socket* pertenece a un proceso y sirve como medio de comunicación entre otro proceso (sea que esté ejecutandose en la misma máquina u en otra conectada a Internet). Esto nos permite intercambiar información. Para hacer esto posible existen algunos protocolos como TCP o UDP (en el ejemplo práctico usaremos TCP ya que es el más común).
+Un *socket* pertenece a un proceso y sirve como medio de comunicación entre otro proceso (sea que esté ejecutandose en la misma máquina u otra en tu misma red local o conectada a Internet). Esto nos permite intercambiar información. Para hacer esto posible existen algunos protocolos como TCP o UDP (en el ejemplo práctico usaremos TCP ya que es el más común).
 
 > UDP (User Datagram Protocol) es un protocolo  **SIN CONEXION**, es decir, envía paquetes sin llegar a conectarse al destino para así maximizar la velocidad de transmisión de información (en este caso la información se envía en **datagramas**)
 
@@ -37,7 +37,7 @@ Un *socket* pertenece a un proceso y sirve como medio de comunicación entre otr
 <img src="/assets/images/que-es-un-socket-y-como-funciona/img1.jpeg" width="100%">
 </p>
 
-En este esquema hay 2 ordenadores con su dirección IP propia (`174.123.241.13` y `142.250.134.127`). En cada  ordenador se ejecuta un proceso (A y B) que hacen uso de los puertos `8000` y `5834` respectivamente. Como hemos dicho antes, cada socket será identificado por su IP y su puerto.
+En este esquema hay 2 ordenadores con su dirección IP propia (`174.123.241.13` y `142.250.134.127`). En cada ordenador se ejecuta un proceso (A y B) que hacen uso de los puertos `8000` y `5834` respectivamente. Como hemos dicho antes, cada socket será identificado por su IP y su puerto.
 
 Así pues el socket A será: `174.123.241.13:8000` y el socket B será: `142.250.134.127:5834`.
 ## Ejemplo práctico - Echo server
@@ -47,7 +47,7 @@ Un echo server consiste en mandarle una información al servidor y recibir a tra
 
 Para ello, necesitaremos crear el servidor (socket A) y el cliente (socket B).
 ### SERVIDOR
-Antes de nada, para mayor comodidad definiremos 2 constantes: `HOST` que almacenará la dirección IP que usaremos y `PORT`que almacenará el puerto que usaremos. (también importamos la libreria socket ya que posteriormente la necesitaremos)
+Antes de nada, para mayor comodidad definiremos 2 constantes: `HOST` que almacenará la dirección IP que usaremos y `PORT` que almacenará el puerto que usaremos. Importamos previamente la libreria `socket` ya que posteriormente la necesitaremos.
 
 ```python
 import socket
@@ -55,9 +55,9 @@ import socket
 HOST = '127.0.0.1'      # Localhost
 PORT = 5346
 ```
-La dirección IP que aparece en HOST es la de *localhost*, ya que buscamos trabajar en local. El puerto escogido ha sido uno aleatorio. Existen un total de 65536 puertos, aunque los primeros 1024 se encuentran reservados para el uso del sistema (pueden usarse aunque no no es recomendable ya que podríamos interferir con algún otro proceso importante que haga uso del puerto usado).
+La dirección IP que aparece en HOST es la de *localhost*, ya que buscamos trabajar en local. El puerto escogido ha sido uno aleatorio. Existen un total de 65536 puertos, aunque los primeros 1024 se encuentran reservados para el uso del sistema. Estos pueden usarse aunque no es recomendable ya que podríamos interferir con algún otro proceso importante que haga uso del puerto usado.
 
-Ahora, ya con la librería importada, crearemos un socket mediante la clase `socket` (utilizamos with ya que posteriormente lo necesitaremos para seguir definiendo el código).
+Ahora, ya con la librería importada, crearemos un socket mediante la clase `socket`. Utilizamos `with` ya que posteriormente lo necesitaremos para seguir definiendo el código.
 ```python
 #...
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:    # A partir de ahora el socket será nombrado como "s"
@@ -75,7 +75,7 @@ Una vez que el socket ha sido configurado, hacemos que espere a la conexión de 
 #...
 s.listen()
 ```
-Esto hará que el programa se quede pausado en ese punto, hasta que otro socket se intente conectar (estas características lo convierte en un servidor)
+Esto hará que el programa se quede pausado en ese punto, hasta que otro socket se intente conectar, cumpliendo así las características de un servidor.
 
 Cuando ocurra un intento de conexión, el servidor la acepta automáticamente mediante el método de la clase socket `accept()`. Este método devuelve **otro socket** (importante) que contiene la información socket que se ha conectado y también devuelve su dirección, que almacenaremos en `csocket` y `caddress` respectivamente.
 ```python
@@ -142,12 +142,12 @@ Y ahora hacemos una solicitud de conexión con el servidor.
 #...
 s.connect((SHOST, SPORT))
 ```
-Una vez conectados, le enviamos los datos que queramos (en este caso será un `hello world` simple).
+Una vez conectados, le enviamos los datos que queramos. Yo enviaré un simple "hello world".
 ```python
 #...
 s.sendall(b"Hello world! This is an echo server made with python")
 ```
-Fijate en la b que se encuentra detrás de la cadena de texto que queremos enviar. Esto es para indicar que es un "byte string", que es el tipo de formato en el que debemos de enviar los datos, dado que la clase String internamente es un array de bytes. Otra forma de hacerlo sería guardando el string en una variable y codificarle mediante el método `encode()`.
+Fijate en la b que se encuentra detrás de la cadena de texto que queremos enviar. Esto es para indicar que es un "byte string", que es el tipo de formato en el que debemos de enviar los datos, dado que la clase String internamente es un array de bytes. Otra forma de hacerlo sería guardando el string en una variable y codificarla mediante el método `encode()`.
 
 Luego, guardamos en la variable `data` lo que nos envía el servidor (recuerda que el 1024 indica el tamaño del buffer).
 ```python
