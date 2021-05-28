@@ -1,8 +1,8 @@
 main:
-  - title: "Home"
+  - title: "Inicio"
     url: /
-  #- title: "Artículos"
-  #  url: /year-archive/
+  - title: "Write-ups"
+    url: /tags/#Write-up
   #- title: "Categorías"
   #  url: /categories/
   - title: "Etiquetas"

@@ -10,7 +10,7 @@ header:
 categories:
     - Explicaciones
 tags:
-    - Tutoriales
+    - Artículos
     - Redes
     - Python
     - Sockets
