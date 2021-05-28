@@ -11,13 +11,13 @@ date: 2021-03-24
 <img src="/assets/images/about/cover.jpg" width="30%">
 </p>
 
-Mi nombre es Fran Hernández (a.k.a. "r4kso") y soy estudiante de Ingeniería Informática en la UOC (Universitat Oberta de Catalunya). Vivo en Tenerife, Islas Canarias y me gusta dedicar mi tiempo libre (el poco que tengo) a diferentes actividades como los videojuegos y la lectura.
+Mi nombre es Fran (a.k.a. "r4kso") y soy estudiante de Ingeniería Informática. Vivo en Tenerife, Islas Canarias y me gusta dedicar mi tiempo libre (el poco que tengo) a diferentes actividades como los videojuegos o la lectura.
 
-Se podría decir que nací con un PC debajo del brazo, pues conocí el mundo de la informática desde muy pequeño. No fue hasta los 16 años que me interesé por ella y empecé a aprender HTML y CSS. Al poco tiempo desistí, y no fue hasta que entré en la universidad (1 año y poco después) cuando volví a estudiar la informática.
+Se podría decir que nací con un PC debajo del brazo, pues conocí el mundo de la informática desde muy pequeño. No fue hasta los 16 años cuando me interesé por la programación y empecé a aprender HTML y CSS. Entré a la universidad un año y medio después, y ahí descubrí lo que era la ciberseguridad.
 
-Un par de meses después, descubrí lo que era la ciberseguridad. Me interesó bastante el tema y empecé a aprender por mi cuenta, ya que en la universidad no se enseña lo suficiente... Ahora me he propuesto crear un blog sobre ello para motivarme a aprender y compartir el conocimiento que vaya adquiriendo con otras personas.
+Me interesó bastante el tema y empecé a aprender por mi cuenta, ya que en la universidad no se enseña lo suficiente... Ahora me he propuesto crear un blog sobre ello para motivarme a aprender y compartir el conocimiento que vaya adquiriendo con otras personas.
 ## Certificaciones
-- [CSFPC - Cyber Security Foundation Professional Certificate](https://www.linkedin.com/in/fran-hern%C3%A1ndez-rizo-624b891aa/)
+- [CSFPC - Cyber Security Foundation Professional Certificate](https://www.credly.com/badges/4a0f9e5c-f0a3-4768-91dd-c398741e839f?)
 
 ## Participaciones
 - Academia Hacker INCIBE 2021
