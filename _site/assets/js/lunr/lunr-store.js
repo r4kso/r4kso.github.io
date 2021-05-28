@@ -8,9 +8,4 @@ var store = [{
         "excerpt":"Si tienes prisa, un socket se puede definir rápidamente como un “dispositivo” virtual generado por el sistema operativo a través del cual puedes enviar y recibir información de otros procesos que también se comuniquen mediante sockets. Aunque claro, esta definición se queda un poco corta… ¿Qué es un socket? -...","categories": ["Explicaciones"],
         "tags": ["Artículos","Redes","Python","Sockets"],
         "url": "http://localhost:4000/que-es-un-socket-y-como-funciona/",
-        "teaser":"http://localhost:4000/assets/images/que-es-un-socket-y-como-funciona/portada.png"},{
-        "title": "TryHackMe - RootMe (Detallado)",
-        "excerpt":"    | Priority apples | Second priority | Third priority | |——-|——–|———| | ambrosia | gala | red delicious | | pink lady | jazz | macintosh | | honeycrisp | granny smith | fuji |  ","categories": ["Write-up"],
-        "tags": ["Write-up","TryHackMe"],
-        "url": "http://localhost:4000/TryHackMe-RootMe-WriteUp/",
         "teaser":"http://localhost:4000/assets/images/que-es-un-socket-y-como-funciona/portada.png"}]

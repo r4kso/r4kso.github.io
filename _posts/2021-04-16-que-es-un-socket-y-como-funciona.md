@@ -55,7 +55,7 @@ import socket
 HOST = '127.0.0.1'      # Localhost
 PORT = 5346
 ```
-La dirección IP que aparece en HOST es la de *localhost*, ya que buscamos trabajar en local. El puerto escogido ha sido uno aleatorio. Existen un total de 65536 puertos, aunque los primeros 1024 se encuentran reservados para el uso del sistema. Estos pueden usarse aunque no es recomendable ya que podríamos interferir con algún otro proceso importante que haga uso del puerto usado.
+La dirección IP que aparece en HOST es la de *localhost*, ya que buscamos trabajar en local. El puerto escogido ha sido uno aleatorio. Existen un total de 65536 puertos, aunque los primeros 1024 se encuentran reservados para el uso del sistema. Estos pueden usarse aunque no es recomendable ya que podríamos interferir con algún otro proceso.
 
 Ahora, ya con la librería importada, crearemos un socket mediante la clase `socket`. Utilizamos `with` ya que posteriormente lo necesitaremos para seguir definiendo el código.
 ```python

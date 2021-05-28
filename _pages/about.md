@@ -11,18 +11,18 @@ date: 2021-03-24
 <img src="/assets/images/about/cover.jpg" width="30%">
 </p>
 
-Mi nombre es Fran Hernández (aka **r4kso**) y soy estudiante de Ingeniería Informática en la UOC (Universitat Oberta de Catalunya). Vivo en Tenerife, Islas Canarias y me gusta dedicar mi tiempo libre (el poco que tengo) a diferentes actividades como los videojuegos y la lectura.
+Mi nombre es Fran Hernández (a.k.a. "r4kso") y soy estudiante de Ingeniería Informática en la UOC (Universitat Oberta de Catalunya). Vivo en Tenerife, Islas Canarias y me gusta dedicar mi tiempo libre (el poco que tengo) a diferentes actividades como los videojuegos y la lectura.
 
 Se podría decir que nací con un PC debajo del brazo, pues conocí el mundo de la informática desde muy pequeño. No fue hasta los 16 años que me interesé por ella y empecé a aprender HTML y CSS. Al poco tiempo desistí, y no fue hasta que entré en la universidad (1 año y poco después) cuando volví a estudiar la informática.
 
 Un par de meses después, descubrí lo que era la ciberseguridad. Me interesó bastante el tema y empecé a aprender por mi cuenta, ya que en la universidad no se enseña lo suficiente... Ahora me he propuesto crear un blog sobre ello para motivarme a aprender y compartir el conocimiento que vaya adquiriendo con otras personas.
-# Certificaciones
-[CSFPC](https://www.linkedin.com/in/fran-hern%C3%A1ndez-rizo-624b891aa/) - Cyber Security Foundation Professional Certificate
+## Certificaciones
+- [CSFPC - Cyber Security Foundation Professional Certificate](https://www.linkedin.com/in/fran-hern%C3%A1ndez-rizo-624b891aa/)
 
-# Participaciones
+## Participaciones
 - Academia Hacker INCIBE 2021
 - Hackron 2021
 
-# Contacto
+## Contacto
 Si quieres ponerte en contacto conmigo, puedes hacerlo a través de mensaje directo por [Instagram](https://www.instagram.com/fran.rakso/) o [Twitter](https://twitter.com/r4kso_cs). También puedes enviarme un correo a mi cuenta personal:
 `franhernandezrizo@gmail.com`
