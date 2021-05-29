@@ -20,6 +20,7 @@ Me interesó bastante el tema y empecé a aprender por mi cuenta, ya que en la u
 - [CSFPC - Cyber Security Foundation Professional Certificate](https://www.credly.com/badges/4a0f9e5c-f0a3-4768-91dd-c398741e839f?)
 
 ## Participaciones
+- C1b3rwall Academy 2020 (Organizado por la Policía Nacional)
 - Academia Hacker INCIBE 2021
 - Hackron 2021
 
