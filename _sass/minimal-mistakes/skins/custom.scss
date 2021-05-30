@@ -1,4 +1,24 @@
-$background-color: #0c102e !default;
+$background-color: #1d1e22 !default;
+$text-color: #fdfdfd !default;
+$primary-color: #ffd044 !default;
+$border-color: mix(#fff, $background-color, 20%) !default;
+$code-background-color: rgb(59, 59, 59) !default;
+$code-background-color-dark: rgb(59, 59, 59) !default;
+$form-background-color: rgb(59, 59, 59) !default;
+$footer-background-color:black !default;
+$link-color: mix($primary-color, $text-color, 40%) !default;
+$link-color-hover: mix(#fff, $link-color, 25%) !default;
+$link-color-visited: mix(#000, $link-color, 25%) !default;
+$masthead-link-color: #fdfdfd !default;
+$masthead-link-color-hover: #ffd044 !default;
+$navicon-link-color-hover: #ffd044 !default;
+
+.author__urls.social-icons .svg-inline--fa,
+.page__footer-follow .social-icons .svg-inline--fa {
+  color: inherit;
+}
+
+/*$background-color: #12232E !default;
 $text-color: #fdfdfd !default;
 $primary-color: #9fef00 !default;
 $border-color: mix(#fff, $background-color, 20%) !default;
@@ -16,4 +36,4 @@ $navicon-link-color-hover: mix(#9fef00, $background-color, 30%) !default;
 .author__urls.social-icons .svg-inline--fa,
 .page__footer-follow .social-icons .svg-inline--fa {
   color: inherit;
-}
+}*/
