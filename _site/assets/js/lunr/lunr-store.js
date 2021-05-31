@@ -8,4 +8,9 @@ var store = [{
         "excerpt":"Si tienes prisa, un socket se puede definir rápidamente como un “dispositivo” virtual generado por el sistema operativo a través del cual puedes enviar y recibir información de otros procesos que también se comuniquen mediante sockets. Aunque claro, esta definición se queda un poco corta… ¿Qué es un socket? -...","categories": ["Explicaciones"],
         "tags": ["Artículos","Redes","Python","Sockets"],
         "url": "http://localhost:4000/que-es-un-socket-y-como-funciona/",
-        "teaser":"http://localhost:4000/assets/images/que-es-un-socket-y-como-funciona/portada.png"}]
+        "teaser":"http://localhost:4000/assets/images/que-es-un-socket-y-como-funciona/portada.png"},{
+        "title": "Cómo crear un backdoor y su funcionamiento",
+        "excerpt":"Aviso: Este post se ha realizado únicamente con fines educativos. No me hago responsable de las acciones que puedan realizar terceras personas, fruto del conocimiento transmitido. Backdoor: Un backdoor (puerta trasera), es una secuencia dentro del código de programación de algún archivo o programa que permite otorgar el control del...","categories": ["Tutoriales"],
+        "tags": ["Tutoriales","Redes","Backdoors","msfvenom"],
+        "url": "http://localhost:4000/crear-backdoors/",
+        "teaser":"http://localhost:4000/assets/images/crear-backdoor-como-funciona/portada.jpg"}]
