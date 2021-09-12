@@ -1,0 +1,534 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.15.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>            Como conseguir contraseñas wifi en Windows 10 - r4kso      Blog de ciberseguridad      </title>
+<meta name="description" content="En este post te voy a explicar cómo conseguir las contraseñas wifi almacenadas en un dispositivo que utiliza como sistema operativo Windows 10, y cómo utilizar Python para automatizarlo">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="r4kso | Blog de ciberseguridad">
+<meta property="og:title" content="Como conseguir contraseñas wifi en Windows 10">
+<meta property="og:url" content="http://localhost:4000/como-conseguir-contrasenas-wifi-en-windows-10/">
+
+
+  <meta property="og:description" content="En este post te voy a explicar cómo conseguir las contraseñas wifi almacenadas en un dispositivo que utiliza como sistema operativo Windows 10, y cómo utilizar Python para automatizarlo">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/como-conseguir-contrasenas-wifi-en-windows-10/portada.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-09-12T00:00:00+01:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/como-conseguir-contrasenas-wifi-en-windows-10/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "r4kso",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+  <meta name="google-site-verification" content="i-4J_ebaBRiAqToKNWnZp_rUjs2sm7fmwCbqz8kd7Sg" />
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="r4kso | Blog de ciberseguridad Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/masthead.png" alt=""></a>
+                
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >Inicio</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Etiquetas</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >Sobre mí</a>
+            </li><li class="masthead__menu-item">
+              <a href="/buscador/" >Buscador</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+    
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Como conseguir contraseñas wifi en Windows 10</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profilepic.jpg" alt="r4kso" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">r4kso</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        IT degree student / Interested in cybersecurity / Pentester wannabe
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/notaboutfran" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/fran-hernández-rizo-624b891aa" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://instagram.com/notaboutfran" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/r4kso" itemprop="sameAs" rel="nofollow noopener noreferrer">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Como conseguir contraseñas wifi en Windows 10">
+    <meta itemprop="description" content="En este post te voy a explicar cómo conseguir las contraseñas wifi almacenadas en un dispositivo que utiliza como sistema operativo Windows 10, y cómo utilizar Python para automatizarlo">
+    <meta itemprop="datePublished" content="September 12, 2021">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Como conseguir contraseñas wifi en Windows 10
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p class="page__meta">
+          
+            <i class="fa fa-fw fa-calendar" aria-hidden="true"></i> <time datetime="2021-09-12T00:00:00+01:00">September 12, 2021 </time>&emsp;
+          
+          
+        </p>
+        <p align="center">
+<img src="/assets/images/como-conseguir-contrasenas-wifi-en-windows-10/portada.jpg" width="50%" />
+</p>
+
+<p class="notice--danger"><strong>Aviso:</strong> Este post se ha realizado únicamente con fines educativos. No me hago responsable de las malas acciones que puedan realizar terceras personas, fruto del conocimiento transmitido.</p>
+
+<p>Teniendo acceso a un dispositivo con Windows 10, es bastante sencillo obtener las contraseñas WiFi almacenadas en sus previas conexiones. Para conseguirlas, nos basaremos en el comando <code class="language-plaintext highlighter-rouge">netsh</code>.</p>
+
+<h2 id="obteniendo-contraseñas-wifi-desde-la-consola">Obteniendo contraseñas WiFi desde la consola</h2>
+<p>Para empezar, vamos a listar las ID de las conexiones WiFi a las que el dispositivo ha accedido anteriormente y que siguen “almacenadas” dentro de él. Para ello, usaremos el siguiente comando dentro de la consola:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>netsh wlan show profiles
+</code></pre></div></div>
+
+<p>Ahora veremos listadas las conexiones wifi a las que hemos accedido. En mi caso son las siguientes:</p>
+
+<p align="center">
+<img src="/assets/images/como-conseguir-contrasenas-wifi-en-windows-10/comando-1.jpg" width="50%" />
+</p>
+
+<p>Ahora trataremos de obtener algo más de información sobre alguna de ellas. en este caso utilizaré la red WiFi a la que me encuentro conectado. Para ello utilizaremos el comando anterior añadiendo el ID de la red WiFi sobre la que queremos obtener información:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>netsh wlan show profile MOVISTAR_PLUS_5905
+</code></pre></div></div>
+
+<p align="center">
+<img src="/assets/images/como-conseguir-contrasenas-wifi-en-windows-10/comando-2.jpg" width="50%" />
+</p>
+
+<p>Ahora podremos ver información general, ajustes de conectividad, de seguridad y de coste. En este punto nos interesa un valor en especial: “Security Key”. Como vemos, nos indica que está presente, eso quiere decir que disponemos de la clave de seguridad.
+Queremos obtenerla ¿no? Para ello, le añadiremos al comando anterior <code class="language-plaintext highlighter-rouge">key=clear</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>netsh wlan show profile MOVISTAR_PLUS_5905 <span class="nv">key</span><span class="o">=</span>clear
+</code></pre></div></div>
+
+<p align="center">
+<img src="/assets/images/como-conseguir-contrasenas-wifi-en-windows-10/comando-3.jpg" width="50%" />
+</p>
+
+<p>Así de simple hemos podido obtener la contraseña, y esto mismo funcionará para el resto de IDs. Si buscásemos obtenerlas todas y hubieran 50 IDs diferentes, tardaríamos una eternidad y además sería bastante tedioso, así que… ¿Por qué no automatizarlo?</p>
+
+<h2 id="automatizando-la-obtención-de-contraseñas-wifi-mediante-python">Automatizando la obtención de contraseñas WiFi mediante Python</h2>
+<p>Sin duda alguna Python es de las mejores opciones para hacer scripts de forma rápida y automatizar la mayoría de cosas que se nos hacen tediosas. El objetivo de este post no es enseñar a programar, es por ello que explicaré muy por encima lo que hace el código. Notad que utilizaremos los comandos anteriormente mencionados haciendo uso del módulo “subprocess”:</p>
+
+<p>Empezaremos con los módulos necesarios.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">re</span>
+</code></pre></div></div>
+<p>El módulo “subprocess” nos permitirá usar comandos del sistema y el módulo “re” nos permitirá usar expresiones regulares para extraer información de los resultados obtenidos mediante los comandos de consola.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
+</span><span class="n">output</span> <span class="o">=</span> <span class="n">subprocess</span><span class="p">.</span><span class="n">run</span><span class="p">([</span><span class="s">"netsh"</span><span class="p">,</span> <span class="s">"wlan"</span><span class="p">,</span> <span class="s">"show"</span><span class="p">,</span> <span class="s">"profiles"</span><span class="p">],</span> <span class="n">capture_output</span> <span class="o">=</span> <span class="bp">True</span><span class="p">).</span><span class="n">stdout</span><span class="p">.</span><span class="n">decode</span><span class="p">()</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">(</span><span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="s">"All User Profile     : (.*)</span><span class="se">\r</span><span class="s">"</span><span class="p">,</span> <span class="n">output</span><span class="p">))</span>
+
+<span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div></div>
+<p>En estas líneas de código hemos creado una variable (output) que almacena el resultado del comando <code class="language-plaintext highlighter-rouge">netsh wlan show profiles</code> y otra variable en la que almacenamos todas las IDs de obtenidas en “output”. Luego de esto creamos una lista para almacenar posteriormente la información.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#...
+</span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+        <span class="n">wifi_profile</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">pinfo</span> <span class="o">=</span> <span class="n">subprocess</span><span class="p">.</span><span class="n">run</span><span class="p">([</span><span class="s">"netsh"</span><span class="p">,</span> <span class="s">"wlan"</span><span class="p">,</span> <span class="s">"show"</span><span class="p">,</span> <span class="s">"profile"</span><span class="p">,</span> <span class="n">name</span><span class="p">],</span> <span class="n">capture_output</span> <span class="o">=</span> <span class="bp">True</span><span class="p">).</span><span class="n">stdout</span><span class="p">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="s">"Security key           : Absent"</span><span class="p">,</span> <span class="n">pinfo</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">wifi_profile</span><span class="p">[</span><span class="s">"ssid"</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="n">pinfo_pswd</span> <span class="o">=</span> <span class="n">subprocess</span><span class="p">.</span><span class="n">run</span><span class="p">([</span><span class="s">"netsh"</span><span class="p">,</span> <span class="s">"wlan"</span><span class="p">,</span> <span class="s">"show"</span><span class="p">,</span> <span class="s">"profile"</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s">"key=clear"</span><span class="p">],</span> <span class="n">capture_output</span> <span class="o">=</span> <span class="bp">True</span><span class="p">).</span><span class="n">stdout</span><span class="p">.</span><span class="n">decode</span><span class="p">()</span>
+            <span class="n">pswd</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="s">"Key Content            : (.*)</span><span class="se">\r</span><span class="s">"</span><span class="p">,</span> <span class="n">pinfo_pswd</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">pswd</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">wifi_profile</span><span class="p">[</span><span class="s">"password"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">wifi_profile</span><span class="p">[</span><span class="s">"password"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pswd</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="nb">list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">wifi_profile</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Mediante estas lineas de código comprobamos que existe al menos 1 ID almacenada. Si es así, mediante un bucle buscamos aquellas que tienen almacenada la contraseña (“Security Key : Present”) y la conseguimos añadiéndola posteriormente a una lista. Las IDs que no tienen la contraseña guardada las descartamos. Ahora solo nos queda mostrarlas en pantalla</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)):</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+</code></pre></div></div>
+<p>Recorremos la lista y la mostramos en pantalla. Así hemos automatizado la obtención de todas las contraseñas (que en mi caso son únicamente 3). Vamos a ejecutarlo y comprobar que funciona:</p>
+
+<p align="center">
+<img src="/assets/images/como-conseguir-contrasenas-wifi-en-windows-10/script.jpg" width="50%" />
+</p>
+
+<p>Espero que te haya sido útil este post, recuerda utilizar esta información de forma adecuada. Puedes seguirme en mis redes sociales: <a href="https://www.instagram.com/notaboutfran/">Instagram</a> y <a href="https://twitter.com/notaboutfran">Twitter</a>.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#passwords" class="page__taxonomy-item" rel="tag">Passwords</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">Python</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#tutoriales" class="page__taxonomy-item" rel="tag">Tutoriales</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#windows-10" class="page__taxonomy-item" rel="tag">Windows 10</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#tutoriales" class="page__taxonomy-item" rel="tag">Tutoriales</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Fecha:</strong> <time datetime="2021-09-12T00:00:00+01:00">September 12, 2021</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/crear-backdoors/" class="pagination--pager" title="Cómo crear un backdoor y su funcionamiento
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 r4kso</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script data-search-pseudo-elements defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
