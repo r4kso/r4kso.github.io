@@ -23,7 +23,8 @@ Me interesó bastante el tema y empecé a aprender por mi cuenta, ya que en la u
 - C1b3rwall Academy 2020 (Organizado por la Policía Nacional)
 - Academia Hacker INCIBE 2021
 - Hackron 2021
+- Programa Formativo C1b3rwall Academy 2021-2022
 
 ## Contacto
-Si quieres ponerte en contacto conmigo, puedes hacerlo a través de mensaje directo por [Instagram](https://www.instagram.com/fran.rakso/) o [Twitter](https://twitter.com/r4kso_cs). También puedes enviarme un correo a mi cuenta personal:
+Si quieres ponerte en contacto conmigo, puedes hacerlo a través de mensaje directo por [Instagram](https://www.instagram.com/fran.r4kso/) o [Twitter](https://twitter.com/r4kso_cs). También puedes enviarme un correo a mi cuenta personal:
 `franhernandezrizo@gmail.com`
