@@ -31,8 +31,6 @@ Para empezar, vamos a listar las ID de las conexiones WiFi a las que el disposit
 netsh wlan show profiles
 ```
 
-Ahora veremos listadas las conexiones wifi a las que hemos accedido. En mi caso son las siguientes:
-
 <p align="center">
 <img src="/assets/images/como-conseguir-contrasenas-wifi-en-windows-10/comando-1.jpg" width="50%">
 </p>
@@ -47,7 +45,7 @@ netsh wlan show profile MOVISTAR_PLUS_5905
 <img src="/assets/images/como-conseguir-contrasenas-wifi-en-windows-10/comando-2.jpg" width="50%">
 </p>
 
-Ahora podremos ver información general, ajustes de conectividad, de seguridad y de coste. En este punto nos interesa un valor en especial: "Security Key". Como vemos, nos indica que está presente, eso quiere decir que disponemos de la clave de seguridad.
+Podemos ver información general, ajustes de conectividad, de seguridad y de coste. En este punto nos interesa un valor en especial: "Security Key". Como vemos, nos indica que está presente, eso quiere decir que disponemos de la clave de seguridad.
 Queremos obtenerla ¿no? Para ello, le añadiremos al comando anterior `key=clear`
 
 ```bash
@@ -97,9 +95,12 @@ if len(names) != 0:
                 wifi_profile["password"] = pswd[1]
             list.append(wifi_profile)
 ```
-Mediante estas lineas de código comprobamos que existe al menos 1 ID almacenada. Si es así, mediante un bucle buscamos aquellas que tienen almacenada la contraseña ("Security Key : Present") y la conseguimos añadiéndola posteriormente a una lista. Las IDs que no tienen la contraseña guardada las descartamos. Ahora solo nos queda mostrarlas en pantalla
+Mediante estas lineas de código comprobamos que existe al menos 1 ID almacenada. Si es así, mediante un bucle buscamos aquellas que tienen almacenada la contraseña ("Security Key : Present") y la conseguimos añadiéndola posteriormente a una lista. Las IDs que no tienen la contraseña guardada las descartamos. Ahora solo nos queda mostrarlas en pantalla.
+
+NOTA: La expresiones regulares mediante las que buscamos la información obtenida en "output" se encuentran escritas en inglés, pues es el idioma en el que se encuentra configurado mi sistema operativo. Recordad cambiar las expresiones regulares según el idioma correspondiente.
 
 ```python
+#...
 for x in range(len(list)):
     print(list[x])
 ```
@@ -109,4 +110,6 @@ Recorremos la lista y la mostramos en pantalla. Así hemos automatizado la obten
 <img src="/assets/images/como-conseguir-contrasenas-wifi-en-windows-10/script.jpg" width="50%">
 </p>
 
-Espero que te haya sido útil este post, recuerda utilizar esta información de forma adecuada. Puedes seguirme en mis redes sociales: [Instagram](https://www.instagram.com/notaboutfran/) y [Twitter](https://twitter.com/notaboutfran).
+Como podemos ver, ha listado las 3 conexiones y ha mostrado la contraseña de cada una de ellas, de forma automática y en menos de 2 segundos. Puedes encontrar el código completo en [github](https://github.com/r4kso/HackingScripts/blob/main/GetWifiPasswords.py)
+
+Espero que te haya sido útil este post, recuerda utilizar esta información de forma adecuada. También puedes seguirme en mis redes sociales: [Instagram](https://www.instagram.com/notaboutfran/) y [Twitter](https://twitter.com/notaboutfran).
